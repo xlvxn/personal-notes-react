@@ -22,3 +22,5 @@ function NoteList({ notes }) {
         </>
     )
 }
+
+export default NoteList;
