@@ -32,8 +32,16 @@ class MainPage extends React.Component {
             <>
                 <Header />
                 <Content>
+                    <h2>Catatan Aktif</h2>
                     <NoteList
                         notes = {this.getNote()}
+                        status = "Aktif"
+                    />
+
+                    <h2>Arsip</h2>
+                    <NoteList
+                        notes = {this.getNote()}
+                        status = "Arsip"
                     />
                 </Content>
             </>

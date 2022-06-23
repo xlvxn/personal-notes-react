@@ -1,7 +1,7 @@
 import React from "react";
 import NoteItem from "./NoteItem";
 
-function NoteList({ notes }) {
+function NoteList({ notes, status }) {
     return (
         <>
             {
@@ -9,7 +9,10 @@ function NoteList({ notes }) {
                     <div className="notes-list">
                         {
                             notes.map((note) => (
-                                <NoteItem note={note} />
+                                <NoteItem 
+                                    note = { note }
+                                    status = { status }
+                                />
                             ))
                         }
                     </div>

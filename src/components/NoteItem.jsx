@@ -1,7 +1,7 @@
 import React from "react";
 import { showFormattedDate } from "../utils";
 
-function NoteItem({ note }){
+function NoteItem({ note, status }){
     return (
         <div className="note-item">
             <div className="note-item__content">
@@ -20,7 +20,7 @@ function NoteItem({ note }){
                     Delete
                 </button>
                 <button className="note-item__archive-button">
-                    Archived
+                    { (status == 'Aktif') ? 'Arsipkan' : 'Pindahkan' }
                 </button>
             </div>
         </div>
