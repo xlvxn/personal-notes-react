@@ -34,6 +34,14 @@ class MainPage extends React.Component {
         })
     }
 
+    deleteNote = (id) => {
+        const notes = [...this.state.allNotes]
+        notes.splice(notes.findIndex(note => note.id == id), 1)
+        this.setState({
+            allNotes: notes
+        })
+    }
+
     render() {
         return (
             <>
@@ -44,6 +52,7 @@ class MainPage extends React.Component {
                         notes = {this.getNote()}
                         status = "Aktif"
                         updateStatusNote = {this.updateStatusNote}
+                        deleteNote = {this.deleteNote}
                     />
 
                     <h2>Arsip</h2>
@@ -51,6 +60,7 @@ class MainPage extends React.Component {
                         notes = {this.getNote(true)}
                         status = "Arsip"
                         updateStatusNote = {this.updateStatusNote}
+                        deleteNote = {this.deleteNote}
                     />
                 </Content>
             </>

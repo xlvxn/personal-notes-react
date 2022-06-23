@@ -1,7 +1,7 @@
 import React from "react";
 import NoteItem from "./NoteItem";
 
-function NoteList({ notes, status, updateStatusNote }) {
+function NoteList({ notes, status, updateStatusNote, deleteNote }) {
     return (
         <>
             {
@@ -13,6 +13,7 @@ function NoteList({ notes, status, updateStatusNote }) {
                                     note = { note }
                                     status = { status }
                                     updateStatusNote = { updateStatusNote }
+                                    deleteNote = { deleteNote }
                                 />
                             ))
                         }
