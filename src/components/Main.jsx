@@ -8,9 +8,7 @@ class MainPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            allNotes: [],
-            notes: [],
-            aksi: ''
+            allNotes: []
         }
     }
     
@@ -32,8 +30,6 @@ class MainPage extends React.Component {
         const notes = [...this.state.allNotes]
         notes[notes.findIndex(note => note.id == id)].archived = val
         this.setState({
-            ...this.state,
-            notes,
             allNotes: notes
         })
     }
