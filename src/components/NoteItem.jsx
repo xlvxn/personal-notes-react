@@ -1,7 +1,7 @@
 import React from "react";
 import { showFormattedDate } from "../utils";
 
-function NoteItem({ note, status }){
+function NoteItem({ note, status, updateStatusNote }){
     return (
         <div className="note-item">
             <div className="note-item__content">
@@ -19,7 +19,7 @@ function NoteItem({ note, status }){
                 <button className="note-item__delete-button">
                     Delete
                 </button>
-                <button className="note-item__archive-button">
+                <button className="note-item__archive-button" onClick={() => updateStatusNote(note.id, (status != 'Arsip'))}>
                     { (status == 'Aktif') ? 'Arsipkan' : 'Pindahkan' }
                 </button>
             </div>

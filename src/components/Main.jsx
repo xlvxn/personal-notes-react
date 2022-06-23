@@ -28,6 +28,16 @@ class MainPage extends React.Component {
         })
     }
 
+    updateStatusNote = (id, val) => {
+        const notes = [...this.state.allNotes]
+        notes[notes.findIndex(note => note.id == id)].archived = val
+        this.setState({
+            ...this.state,
+            notes,
+            allNotes: notes
+        })
+    }
+
     render() {
         return (
             <>
@@ -37,12 +47,14 @@ class MainPage extends React.Component {
                     <NoteList
                         notes = {this.getNote()}
                         status = "Aktif"
+                        updateStatusNote = {this.updateStatusNote}
                     />
 
                     <h2>Arsip</h2>
                     <NoteList
                         notes = {this.getNote(true)}
                         status = "Arsip"
+                        updateStatusNote = {this.updateStatusNote}
                     />
                 </Content>
             </>
