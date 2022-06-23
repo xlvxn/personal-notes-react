@@ -14,8 +14,9 @@ class MainPage extends React.Component {
         }
     }
     
-    getNote = () => {
+    getNote = (archive = false) => {
         let notes = [...this.state.allNotes]
+        notes = notes.filter(note => note.archived == archive)
         return notes
     }
 
@@ -40,7 +41,7 @@ class MainPage extends React.Component {
 
                     <h2>Arsip</h2>
                     <NoteList
-                        notes = {this.getNote()}
+                        notes = {this.getNote(true)}
                         status = "Arsip"
                     />
                 </Content>
