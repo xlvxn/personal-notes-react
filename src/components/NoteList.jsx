@@ -10,6 +10,7 @@ function NoteList({ notes, status, updateStatusNote, deleteNote }) {
                         {
                             notes.map((note) => (
                                 <NoteItem 
+                                    key = { note.id }
                                     note = { note }
                                     status = { status }
                                     updateStatusNote = { updateStatusNote }
