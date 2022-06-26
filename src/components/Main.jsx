@@ -9,22 +9,15 @@ class MainPage extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            allNotes: []
+            allNotes: [],
+            notes: []
         }
     }
     
     getNote = (archive = false) => {
-        let notes = [...this.state.allNotes]
+        let notes = [...this.state.notes]
         notes = notes.filter(note => note.archived == archive)
         return notes
-    }
-
-    componentDidMount() {
-        const allNotes = getInitialData()
-    
-        this.setState({
-            allNotes
-        })
     }
 
     updateStatusNote = (id, val) => {
@@ -61,14 +54,40 @@ class MainPage extends React.Component {
 
         this.setState({
             ...this.state,
-            allNotes: notes
+            allNotes: notes,
+            notes
+        })
+    }
+
+    handleSearch = (search) => {
+        let notes = [...this.state.allNotes]
+        if(search != '') {
+            notes = notes.filter(note => note.title.toLowerCase().includes(search.toLowerCase()))
+        }
+        console.log(notes)
+        this.setState({
+            ...this.state,
+            notes
+        })
+    }
+
+    componentDidMount() {
+        const allNotes = getInitialData()
+        const notes = getInitialData()
+    
+        this.setState({
+            ...this.state,
+            allNotes,
+            notes
         })
     }
 
     render() {
         return (
             <>
-                <Header />
+                <Header
+                    handleSearch = {this.handleSearch}
+                />
                 <Content>
                     <NoteAdd
                         tambahNote={this.tambahNote}
