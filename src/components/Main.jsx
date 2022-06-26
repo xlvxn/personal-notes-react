@@ -3,6 +3,7 @@ import Header from "./Header";
 import Content from "./Content";
 import NoteList from "./NoteList";
 import { getInitialData } from "../utils";
+import NoteAdd from "./NoteAdd";
 
 class MainPage extends React.Component {
     constructor(props) {
@@ -42,11 +43,37 @@ class MainPage extends React.Component {
         })
     }
 
+    tambahNote = (form) => {
+        const notes = [...this.state.allNotes]
+        const newNotes = {
+            id: +new Date(),
+            title: form.title,
+            body: form.body,
+            createdAt: new Date(),
+            archived: false
+        }
+
+        notes.push(newNotes)
+
+        notes.sort(function(a, b){
+            return new Date(b.createdAt) - new Date(a.createdAt);
+        });
+
+        this.setState({
+            ...this.state,
+            allNotes: notes
+        })
+    }
+
     render() {
         return (
             <>
                 <Header />
                 <Content>
+                    <NoteAdd
+                        tambahNote={this.tambahNote}
+                    />
+
                     <h2>Catatan Aktif</h2>
                     <NoteList
                         notes = {this.getNote()}
