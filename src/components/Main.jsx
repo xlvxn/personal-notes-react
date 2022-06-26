@@ -13,6 +13,17 @@ class MainPage extends React.Component {
             notes: []
         }
     }
+
+    componentDidMount() {
+        const allNotes = getInitialData()
+        const notes = getInitialData()
+    
+        this.setState({
+            ...this.state,
+            allNotes,
+            notes
+        })
+    }
     
     getNote = (archive = false) => {
         let notes = [...this.state.notes]
@@ -24,7 +35,8 @@ class MainPage extends React.Component {
         const notes = [...this.state.allNotes]
         notes[notes.findIndex(note => note.id == id)].archived = val
         this.setState({
-            allNotes: notes
+            allNotes: notes,
+            notes
         })
     }
 
@@ -32,7 +44,8 @@ class MainPage extends React.Component {
         const notes = [...this.state.allNotes]
         notes.splice(notes.findIndex(note => note.id == id), 1)
         this.setState({
-            allNotes: notes
+            allNotes: notes,
+            notes
         })
     }
 
@@ -67,17 +80,6 @@ class MainPage extends React.Component {
         console.log(notes)
         this.setState({
             ...this.state,
-            notes
-        })
-    }
-
-    componentDidMount() {
-        const allNotes = getInitialData()
-        const notes = getInitialData()
-    
-        this.setState({
-            ...this.state,
-            allNotes,
             notes
         })
     }
